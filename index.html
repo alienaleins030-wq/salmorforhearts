@@ -10,9 +10,9 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --paper:#f7f4ee; --card:#fffdf9; --mock:#ece7db;
+  --paper:#f7f4ee; --card:#fffdf9;
   --ink:#1c1a17; --muted:#97907f; --line:#e5ded0;
-  --aka:#c8402f; --aka-soft:#f9e4de;
+  --aka:#c8402f;
   --radius:26px;
   --shadow:0 24px 60px rgba(28,26,23,.10);
 }
@@ -21,19 +21,13 @@ body{font-family:'Manrope',system-ui,sans-serif;background:var(--paper);color:va
 .mincho{font-family:'Shippori Mincho',serif}
 button{font-family:inherit}
 .vtext{writing-mode:vertical-rl;letter-spacing:.35em}
-
-/* petals — едва заметные */
 .petal{position:fixed;top:-4vh;width:11px;height:11px;background:#f0b9c6;border-radius:60% 0 60% 60%;opacity:0;z-index:1;pointer-events:none;animation:fall linear infinite}
 @keyframes fall{0%{opacity:0;transform:translateY(-5vh) rotate(0)}12%{opacity:.45}85%{opacity:.3}100%{opacity:0;transform:translateY(108vh) rotate(640deg) translateX(70px)}}
-.branch{position:fixed;top:-14px;right:-14px;width:280px;z-index:0;pointer-events:none;opacity:.5}
 
-/* marquee */
 .marquee{background:var(--ink);color:#f7f4ee;font-size:12px;font-weight:700;letter-spacing:3px;overflow:hidden;white-space:nowrap;padding:10px 0}
 .marquee span{display:inline-block;padding-right:40px;animation:scroll 26s linear infinite}
-.marquee .mincho{letter-spacing:6px}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* header */
 header{position:sticky;top:0;z-index:100;background:rgba(247,244,238,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .hwrap{max-width:1280px;margin:0 auto;padding:13px 28px;display:flex;align-items:center;gap:20px}
 .hanko{width:44px;height:44px;border-radius:12px;background:var(--aka);color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;box-shadow:3px 3px 0 var(--ink)}
@@ -49,7 +43,6 @@ nav.main a:hover{opacity:1;color:var(--aka)}
 .icon-btn:hover{background:var(--ink);color:#fff}
 .count{position:absolute;top:-4px;right:-4px;background:var(--aka);color:#fff;font-size:10px;font-weight:800;min-width:20px;height:20px;border-radius:999px;display:flex;align-items:center;justify-content:center;padding:0 5px}
 
-/* hero */
 .hero{max-width:1280px;margin:30px auto 0;padding:0 28px;display:grid;grid-template-columns:1fr 1fr;gap:24px;position:relative;z-index:2}
 .hero-text{padding:26px 10px 26px 26px;display:flex;gap:22px}
 .hero-v{font-size:15px;color:var(--muted);padding-top:6px}
@@ -68,24 +61,23 @@ nav.main a:hover{opacity:1;color:var(--aka)}
 .hero-stats{display:flex;gap:34px;margin-top:30px}
 .hero-stats b{font-size:22px;display:block}
 .hero-stats span{font-size:11px;letter-spacing:2px;color:var(--muted)}
-.hero-visual{background:var(--mock);border-radius:34px;border:1px solid var(--line);position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;gap:6px;padding:34px 20px 0;min-height:420px}
-.hero-visual::before{content:'余白の美';position:absolute;top:22px;left:26px;font-family:'Shippori Mincho',serif;font-size:20px;letter-spacing:.4em;color:rgba(28,26,23,.35)}
-.hanko-big{position:absolute;top:20px;right:22px;width:56px;height:56px;border-radius:14px;background:var(--aka);color:#fff;font-size:30px;display:flex;align-items:center;justify-content:center;transform:rotate(8deg);box-shadow:4px 4px 0 var(--ink)}
-.hg{width:32%;max-width:220px}
-.hg svg{width:100%;height:auto}
+.hero-visual{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;align-items:end}
+.hv{position:relative;border-radius:30px;overflow:hidden;background:#e6e0d2;min-height:300px}
+.hv img{width:100%;height:100%;object-fit:cover;display:block}
+.hv1{grid-row:span 2}
+.hv-tag{position:absolute;left:14px;bottom:12px;background:rgba(255,255,255,.95);border-radius:999px;padding:7px 14px;font-size:12px;font-weight:800
+;box-shadow:3px 3px 0 var(--ink)}
 
-/* categories */
 .cats{max-width:1280px;margin:24px auto 0;padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative;z-index:2}
-.cat{background:var(--mock);border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:.25s;overflow:hidden}
+.cat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px;cursor:pointer;transition:.25s;overflow:hidden}
 .cat:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.cat .mini{width:86px;flex-shrink:0}
-.cat .mini svg{width:100%;height:auto}
+.cat .pic{height:150px;border-radius:18px;overflow:hidden;background:#e6e0d2;margin-bottom:12px;position:relative}
+.cat .pic img{width:100%;height:100%;object-fit:cover}
+.cat .pic .kj{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.9);border-radius:999px;font-size:13px;padding:5px 12px;box-shadow:2px 2px 0 var(--ink)}
 .cat b{font-size:17px;display:block}
-.cat .kj{font-size:15px;color:var(--aka)}
 .cat span{font-size:12px;color:var(--muted)}
-.cat .arr{margin-left:auto;font-size:20px}
+.cat .arr{float:right;font-size:22px;color:var(--aka)}
 
-/* catalog */
 .catalog{max-width:1280px;margin:0 auto;padding:52px 28px 10px;position:relative;z-index:2}
 .sec-kicker{display:flex;align-items:center;gap:12px;font-size:12px;font-weight:800;letter-spacing:3px;color:var(--aka)}
 .sec-kicker::before{content:'';width:34px;height:2px;background:var(--aka)}
@@ -100,15 +92,12 @@ nav.main a:hover{opacity:1;color:var(--aka)}
 .sortsel{border:1px solid var(--line);background:#fff;border-radius:999px;padding:11px 18px;font-size:13px;font-weight:700;font-family:inherit;cursor:pointer}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 
-/* ЕДИНЫЙ шаблон карточки */
+/* карточка: реальные фото, единый студийный фон */
 .card{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);transition:.25s;display:flex;flex-direction:column}
 .card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
-.ph{position:relative;background:var(--mock);aspect-ratio:1/1.02;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.ph::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 38%,rgba(255,255,255,.55),transparent 62%);pointer-events:none}
-.ph svg.garment{width:72%;height:auto;position:relative;z-index:1;transition:.35s}
-.card:hover .ph svg.garment{transform:scale(1.045)}
-.ph .pnum{position:absolute;left:14px;bottom:10px;font-size:11px;letter-spacing:2px;color:rgba(28,26,23,.4);font-weight:700;z-index:2}
-/* стикер-бейдж */
+.ph{position:relative;background:linear-gradient(145deg,#f0ece2,#e9e2d2);aspect-ratio:1/1.05;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;transition:.4s;display:block}
+.card:hover .ph img{transform:scale(1.06)}
 .sticker-badge{position:absolute;top:14px;left:14px;z-index:3;background:#fff;color:var(--ink);font-size:10px;font-weight:800;letter-spacing:1.5px;padding:8px 14px;border-radius:999px;border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transform:rotate(-5deg)}
 .sticker-badge.hot{background:var(--aka);color:#fff;border-color:#fff;box-shadow:3px 3px 0 var(--ink)}
 .wbtns{position:absolute;top:12px;right:12px;display:flex;flex-direction:column;gap:8px;z-index:3}
@@ -127,7 +116,7 @@ nav.main a:hover{opacity:1;color:var(--aka)}
 .dot{width:18px;height:18px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line);cursor:pointer}
 .dot.sel{box-shadow:0 0 0 2px var(--ink)}
 .stars{display:flex;align-items:center;gap:6px}
-.star{color:#ddd6c4;font-size:16px;cursor:pointer;transition:.15s}
+.star{color:#e4ddcb;font-size:16px;cursor:pointer;transition:.15s}
 .star.f{color:#e8a100}
 .snum{font-size:12px;color:var(--muted);font-weight:600}
 .sizes{display:flex;gap:7px;flex-wrap:wrap}
@@ -139,7 +128,6 @@ nav.main a:hover{opacity:1;color:var(--aka)}
 .addbtn{width:100%;padding:14px;border:2px solid var(--ink);border-radius:16px;background:#fff;color:var(--ink);font-size:12px;font-weight:800;letter-spacing:1.5px;cursor:pointer;transition:.2s;box-shadow:3px 3px 0 var(--ink)}
 .addbtn:hover{background:var(--ink);color:#fff;box-shadow:3px 3px 0 var(--aka)}
 
-/* стикеры-фишки */
 .stickers{max-width:1280px;margin:44px auto 0;padding:0 28px;position:relative;z-index:2}
 .stick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px}
 .sticker{background:#fff;border:3px solid var(--ink);border-radius:24px;padding:26px 22px;box-shadow:6px 6px 0 var(--ink);transition:.22s;position:relative}
@@ -153,7 +141,6 @@ nav.main a:hover{opacity:1;color:var(--aka)}
 .sticker span{font-size:13px;color:var(--muted);line-height:1.55;display:block}
 .sticker .kj{position:absolute;top:12px;right:16px;font-size:15px;color:var(--aka)}
 
-/* принцип */
 .philo{max-width:1280px;margin:44px auto 0;padding:0 28px;position:relative;z-index:2}
 .philo-box{background:var(--ink);color:#f7f4ee;border-radius:34px;padding:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:36px;position:relative;overflow:hidden}
 .philo-box::after{content:'侘寂';position:absolute;right:30px;bottom:-30px;font-family:'Shippori Mincho',serif;font-size:170px;opacity:.07;pointer-events:none}
@@ -161,7 +148,6 @@ nav.main a:hover{opacity:1;color:var(--aka)}
 .phi b{display:block;font-size:16px;margin:12px 0 6px}
 .phi span{font-size:13px;opacity:.6;line-height:1.6;display:block}
 
-/* footer */
 footer{background:var(--ink);color:#f7f4ee;margin-top:56px;border-radius:34px 34px 0 0;position:relative;z-index:2}
 .fwrap{max-width:1280px;margin:0 auto;padding:54px 28px 26px;display:grid;grid-template-columns:1.3fr 1fr 1fr auto;gap:30px;align-items:start}
 .fwrap h4{font-size:11px;letter-spacing:3px;opacity:.5;margin-bottom:14px}
@@ -171,7 +157,6 @@ footer{background:var(--ink);color:#f7f4ee;margin-top:56px;border-radius:34px 34
 .fv{font-size:14px;opacity:.5}
 .fbottom{max-width:1280px;margin:0 auto;padding:20px 28px 30px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;font-size:12px;opacity:.5;flex-wrap:wrap;gap:10px}
 
-/* cart */
 .overlay{position:fixed;inset:0;background:rgba(28,26,23,.45);z-index:500;display:none}
 .overlay.on{display:block}
 .drawer{position:fixed;top:0;right:-480px;width:460px;max-width:100%;height:100%;background:var(--card);z-index:501;transition:right .35s ease;display:flex;flex-direction:column;border-radius:28px 0 0 28px}
@@ -181,8 +166,8 @@ footer{background:var(--ink);color:#f7f4ee;margin-top:56px;border-radius:34px 34
 .xbtn{background:var(--paper);border:1.5px solid var(--ink);width:38px;height:38px;border-radius:50%;font-size:16px;cursor:pointer;box-shadow:2px 2px 0 var(--ink)}
 .ditems{flex:1;overflow-y:auto;padding:10px 26px}
 .ditem{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
-.ditem .thumb{width:72px;height:82px;border-radius:14px;background:var(--mock);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
-.ditem .thumb svg{width:85%;height:auto}
+.ditem .thumb{width:72px;height:84px;border-radius:14px;background:linear-gradient(145deg,#f0ece2,#e9e2d2);overflow:hidden;flex-shrink:0}
+.ditem .thumb img{width:100%;height:100%;object-fit:cover}
 .ditem .n{font-size:14px;font-weight:800}
 .ditem .s{font-size:12px;color:var(--muted);margin-top:3px}
 .ditem .p{color:var(--aka);font-weight:800;margin-top:6px;font-size:14px}
@@ -192,7 +177,6 @@ footer{background:var(--ink);color:#f7f4ee;margin-top:56px;border-radius:34px 34
 .checkout{width:100%;padding:17px;border:2px solid var(--ink);border-radius:18px;background:var(--ink);color:#fff;font-size:13px;font-weight:800;letter-spacing:2px;cursor:pointer;box-shadow:4px 4px 0 var(--aka)}
 .checkout:hover{background:var(--aka);box-shadow:4px 4px 0 var(--ink)}
 
-/* payment */
 .modal{position:fixed;inset:0;z-index:600;display:none;align-items:center;justify-content:center;padding:20px}
 .modal.on{display:flex}
 .mbox{background:var(--card);width:100%;max-width:480px;border-radius:28px;border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:38px;position:relative;animation:pop .25s ease}
@@ -214,7 +198,7 @@ footer{background:var(--ink);color:#f7f4ee;margin-top:56px;border-radius:34px 34
 .success h3{margin:14px 0 8px}
 .success p{color:var(--muted);font-size:14px;line-height:1.6}
 
-@media(max-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}.stick-grid{grid-template-columns:repeat(2,1fr)}.philo-box{grid-template-columns:1fr}.fwrap{grid-template-columns:1fr 1fr}}
+@media(max-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}.hubar{grid-template-columns:1fr}.stick-grid{grid-template-columns:repeat(2,1fr)}.philo-box{grid-template-columns:1fr}.fwrap{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){
   nav.main,.search,.hero-v{display:none}
   .hwrap{padding:12px 18px}
@@ -223,6 +207,8 @@ footer{background:var(--ink);color:#f7f4ee;margin-top:56px;border-radius:34px 34
   .cats{grid-template-columns:1fr}
   .stick-grid{grid-template-columns:1fr}
   .philo-box{padding:34px 26px}
+  .hero-visual{grid-template-columns:1fr 1fr}
+  .hv1{grid-row:span 1}
   .fwrap{grid-template-columns:1fr}
   .fv{display:none}
 }
@@ -230,13 +216,12 @@ footer{background:var(--ink);color:#f7f4ee;margin-top:56px;border-radius:34px 34
 </head>
 <body>
 <div id="petals"></div>
-<svg class="branch" viewBox="0 0 280 200"><path d="M280,10 Q220,30 180,70 T90,120" stroke="#8a7a68" stroke-width="4" fill="none" opacity=".5"/><path d="M200,55 Q170,60 150,85" stroke="#8a7a68" stroke-width="2.5" fill="none" opacity=".4"/><g fill="#e9aebb" opacity=".65"><circle cx="175" cy="68" r="9"/><circle cx="150" cy="85" r="7"/><circle cx="120" cy="100" r="8"/><circle cx="95" cy="118" r="6"/><circle cx="205" cy="52" r="7"/><circle cx="228" cy="40" r="8"/></g></svg>
 
 <div class="marquee"><span><span class="mincho">余白の美</span> &nbsp;•&nbsp; НОВЫЙ ДРОП 2026 &nbsp;•&nbsp; <span class="mincho">送料無料</span> ОТ 5000 ₽ &nbsp;•&nbsp; ВОЗВРАТ 30 ДНЕЙ &nbsp;•&nbsp; <span class="mincho">侘寂</span> &nbsp;•&nbsp; НОВЫЙ ДРОП 2026 &nbsp;•&nbsp; <span class="mincho">送料無料</span> ОТ 5000 ₽ &nbsp;•&nbsp; ВОЗВРАТ 30 ДНЕЙ &nbsp;•&nbsp;</span></div>
 
 <header>
   <div class="hwrap">
-    <div class="hanko mincho">心</div>
+    <a href="#" class="hanko mincho" style="text-decoration:none">心</a>
     <a href="#" class="logo">SALMORFORHEARTS<small>余白の美 · EST. 2026</small></a>
     <nav class="main">
       <a href="#catalog" onclick="setFilter('all')">Каталог</a>
@@ -259,7 +244,7 @@ footer{background:var(--ink);color:#f7f4ee;margin-top:56px;border-radius:34px 34
     <div class="hero-main">
       <h1>Тишина.<br>Ткань.<br><span class="aka">Форма.</span></h1>
       <div class="hero-jp mincho">侘寂の服 <span>— ОДЕЖДА В ДУХЕ ВАБИ-САБИ</span></div>
-      <p>Футболки, худи и джинсы без шума. Плотная ткань, честная посадка, тихие принты. Вещи, которые не кричат, — их замечают.</p>
+      <p>Футболки, худи и джинсы без шума. Плотный хлопок, честная посадка, тихие принты. Вещи, которые не кричат, — их замечают.</p>
       <div class="hero-cta">
         <a class="btn btn-ink" href="#catalog">СМОТРЕТЬ КАТАЛОГ</a>
         <a class="btn btn-line" href="#philo">НАШ ПРИНЦИП</a>
@@ -272,17 +257,16 @@ footer{background:var(--ink);color:#f7f4ee;margin-top:56px;border-radius:34px 34
     </div>
   </div>
   <div class="hero-visual">
-    <div class="hanko-big mincho">心</div>
-    <div class="hg" id="heroTee"></div>
-    <div class="hg" id="heroHoodie"></div>
-    <div class="hg" id="heroJeans"></div>
+    <div class="hv hv1"><img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=800&auto=format&fit=crop" alt="Футболки" onerror="this.src='https://picsum.photos/seed/h1/800/1000'"><span class="hv-tag">Футболки · от 2 490 ₽</span></div>
+    <div class="hv"><img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=800&auto=format&fit=crop" alt="Худи" onerror="this.src='https://picsum.photos/seed/h2/800/600'"><span class="hv-tag">Худи · от 4 990 ₽</span></div>
+    <div class="hv"><img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=800&auto=format&fit=crop" alt="Джинсы" onerror="this.src='https://picsum.photos/seed/h3/800/600'"><span class="hv-tag">Джинсы · от 5 290 ₽</span></div>
   </div>
 </section>
 
 <section class="cats">
-  <div class="cat" onclick="setFilter('tees')"><div class="mini" id="catTee"></div><div><span class="kj mincho">半袖</span><b>Футболки</b><span>6 моделей · от 2 490 ₽</span></div><div class="arr">→</div></div>
-  <div class="cat" onclick="setFilter('hoodies')"><div class="mini" id="catHoodie"></div><div><span class="kj mincho">上着</span><b>Худи</b><span>4 модели · от 4 990 ₽</span></div><div class="arr">→</div></div>
-  <div class="cat" onclick="setFilter('jeans')"><div class="mini" id="catJeans"></div><div><span class="kj mincho">牛仔</span><b>Джинсы</b><span>6 моделей · от 5 290 ₽</span></div><div class="arr">→</div></div>
+  <div class="cat" onclick="setFilter('tees')"><div class="pic"><span class="kj mincho">半袖</span><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800&auto=format&fit=crop" alt="Футболки" onerror="this.src='https://picsum.photos/seed/c1/800/400'"></div><div class="arr">→</div><b>Футболки</b><span>6 моделей · от 2 490 ₽</span></div>
+  <div class="cat" onclick="setFilter('hoodies')"><div class="pic"><span class="kj mincho">上着</span><img src="https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?q=80&w=800&auto=format&fit=crop" alt="Худи" onerror="this.src='https://picsum.photos/seed/c2/800/400'"></div><div class="arr">→</div><b>Худи</b><span>4 модели · от 4 990 ₽</span></div>
+  <div class="cat" onclick="setFilter('jeans')"><div class="pic"><span class="kj mincho">牛仔</span><img src="https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=800&auto=format&fit=crop" alt="Джинсы" onerror="this.src='https://picsum.photos/seed/c3/800/400'"></div><div class="arr">→</div><b>Джинсы</b><span>6 моделей · от 5 290 ₽</span></div>
 </section>
 
 <main class="catalog" id="catalog">
@@ -335,14 +319,10 @@ footer{background:var(--ink);color:#f7f4ee;margin-top:56px;border-radius:34px 34
 </footer>
 
 <div class="overlay" id="overlay" onclick="closeAll()"></div>
-
 <aside class="drawer" id="drawer">
   <div class="dhead"><h3>Корзина <span class="mincho" style="color:var(--aka)">籠</span></h3><button class="xbtn" onclick="closeAll()">✕</button></div>
   <div class="ditems" id="ditems"></div>
-  <div class="dfoot">
-    <div class="total"><span>Итого</span><span id="dtotal">0 ₽</span></div>
-    <button class="checkout" onclick="openPay()">ОФОРМИТЬ ЗАКАЗ</button>
-  </div>
+  <div class="dfoot"><div class="total"><span>Итого</span><span id="dtotal">0 ₽</span></div><button class="checkout" onclick="openPay()">ОФОРМИТЬ ЗАКАЗ</button></div>
 </aside>
 
 <div class="modal" id="payModal">
@@ -353,10 +333,7 @@ footer{background:var(--ink);color:#f7f4ee;margin-top:56px;border-radius:34px 34
     <form onsubmit="doPay(event)">
       <div class="fg"><label>ИМЯ НА КАРТЕ</label><input required placeholder="IVAN IVANOV"></div>
       <div class="fg"><label>НОМЕР КАРТЫ</label><input required placeholder="0000 0000 0000 0000" maxlength="19" oninput="fmtCard(this)"></div>
-      <div class="frow">
-        <div class="fg"><label>СРОК</label><input required placeholder="MM/ГГ" maxlength="5" oninput="fmtExp(this)"></div>
-        <div class="fg"><label>CVC</label><input required type="password" placeholder="•••" maxlength="3"></div>
-      </div>
+      <div class="frow"><div class="fg"><label>СРОК</label><input required placeholder="MM/ГГ" maxlength="5" oninput="fmtExp(this)"></div><div class="fg"><label>CVC</label><input required type="password" placeholder="•••" maxlength="3"></div></div>
       <button class="pay" type="submit">ОПЛАТИТЬ</button>
       <div class="secure">🔒 Данные защищены</div>
     </form>
@@ -367,127 +344,70 @@ footer{background:var(--ink);color:#f7f4ee;margin-top:56px;border-radius:34px 34
 <div class="toast" id="toast"></div>
 
 <script>
-const AKA='#c8402f';
-/* ---------- ЕДИНЫЙ шаблон макетов: один стиль на все товары ---------- */
-function garment(p){
-  const c=p.c, dark=p.dark, ln=dark?'rgba(255,255,255,.5)':'rgba(60,50,40,.35)';
-  const shD='rgba(0,0,0,.10)', shL='rgba(255,255,255,.14)';
-  let inner='';
-  if(p.type==='tee'){
-    inner=`<ellipse cx="100" cy="212" rx="54" ry="7" fill="rgba(30,25,20,.14)"/>
-    <path d="M74,44 L42,66 L50,92 L70,84 L70,200 Q70,206 76,206 L124,206 Q130,206 130,200 L130,84 L150,92 L158,66 L126,44 Q113,56 100,56 Q87,56 74,44 Z" fill="${c}" stroke="${ln}" stroke-width="1.5"/>
-    <path d="M70,84 L70,200 L84,200 L84,90 Z" fill="${shD}"/><path d="M130,84 L130,200 L116,200 L116,90 Z" fill="${shD}"/>
-    <path d="M84,90 L84,200 L92,200 L92,92 Z" fill="${shL}"/>
-    <path d="M84,47 Q100,60 116,47" fill="none" stroke="${ln}" stroke-width="4" stroke-linecap="round"/>
-    <path d="M50,88 L68,81 M132,81 L150,88" stroke="${ln}" stroke-width="1.2"/>
-    <line x1="70" y1="197" x2="130" y2="197" stroke="${ln}" stroke-width="1" stroke-dasharray="4 3"/>`;
-  }else if(p.type==='hoodie'){
-    inner=`<ellipse cx="100" cy="226" rx="56" ry="7" fill="rgba(30,25,20,.14)"/>
-    <path d="M68,62 Q72,20 100,20 Q128,20 132,62 Q118,46 100,46 Q82,46 68,62 Z" fill="${c}" stroke="${ln}" stroke-width="1.5"/>
-    <path d="M68,62 Q72,20 100,20 Q128,20 132,62" fill="none" stroke="${shD}" stroke-width="6"/>
-    <ellipse cx="100" cy="54" rx="19" ry="13" fill="rgba(0,0,0,.30)"/>
-    <path d="M68,58 L46,72 L38,190 L56,192 L64,120 Z" fill="${c}" stroke="${ln}" stroke-width="1.5"/>
-    <path d="M132,58 L154,72 L162,190 L144,192 L136,120 Z" fill="${c}" stroke="${ln}" stroke-width="1.5"/>
-    <path d="M68,58 L132,58 L136,120 L136,206 Q136,212 130,212 L70,212 Q64,212 64,206 L64,120 Z" fill="${c}" stroke="${ln}" stroke-width="1.5"/>
-    <path d="M64,120 L64,206 L78,206 L78,122 Z" fill="${shD}"/><path d="M136,120 L136,206 L122,206 L122,122 Z" fill="${shD}"/>
-    <rect x="64" y="194" width="72" height="18" rx="5" fill="${shD}"/>
-    <line x1="40" y1="182" x2="57" y2="184" stroke="${ln}" stroke-width="1.5"/><line x1="160" y1="182" x2="143" y2="184" stroke="${ln}" stroke-width="1.5"/>
-    <rect x="76" y="146" width="48" height="52" rx="10" fill="none" stroke="${ln}" stroke-width="1.8"/>
-    <line x1="76" y1="158" x2="88" y2="150" stroke="${ln}" stroke-width="1.8"/><line x1="124" y1="158" x2="112" y2="150" stroke="${ln}" stroke-width="1.8"/>
-    <line x1="92" y1="68" x2="88" y2="102" stroke="${ln}" stroke-width="2" stroke-linecap="round"/><line x1="108" y1="68" x2="112" y2="102" stroke="${ln}" stroke-width="2" stroke-linecap="round"/>
-    <circle cx="88" cy="104" r="2.4" fill="${ln}"/><circle cx="112" cy="104" r="2.4" fill="${ln}"/>`;
-  }else{
-    inner=`<ellipse cx="80" cy="242" rx="48" ry="6" fill="rgba(30,25,20,.14)"/>
-    <rect x="36" y="14" width="88" height="24" rx="3" fill="${c}" stroke="${ln}" stroke-width="1.5"/>
-    <rect x="46" y="10" width="7" height="32" rx="2" fill="${c}" stroke="${ln}" stroke-width="1.2"/><rect x="107" y="10" width="7" height="32" rx="2" fill="${c}" stroke="${ln}" stroke-width="1.2"/>
-    <circle cx="80" cy="26" r="3.4" fill="${ln}"/>
-    <path d="M36,38 L32,236 L66,236 L74,118 L86,118 L94,236 L128,236 L124,38 Z" fill="${c}" stroke="${ln}" stroke-width="1.5"/>
-    <path d="M32,236 L66,236 L70,170 L34,170 Z" fill="${shD}" opacity=".5"/><path d="M128,236 L94,236 L90,170 L126,170 Z" fill="${shD}" opacity=".5"/>
-    <path d="M80,40 L80,72" stroke="${ln}" stroke-width="1.6"/>
-    <path d="M44,52 Q44,70 58,72 M116,52 Q116,70 102,72" fill="none" stroke="${ln}" stroke-width="1.4"/>
-    <line x1="38" y1="60" x2="35" y2="230" stroke="${ln}" stroke-width="1" stroke-dasharray="4 3"/><line x1="122" y1="60" x2="125" y2="230" stroke="${ln}" stroke-width="1" stroke-dasharray="4 3"/>
-    <line x1="60" y1="140" x2="56" y2="200" stroke="${shL}" stroke-width="5"/><line x1="100" y1="140" x2="104" y2="200" stroke="${shL}" stroke-width="5"/>`;
-  }
-  const vb=p.type==='hoodie'?'0 0 200 236':(p.type==='tee'?'0 0 200 224':'0 0 160 252');
-  return `<svg class="garment" viewBox="${vb}">${inner}${print(p)}</svg>`;
-}
-/* тихие японские принты */
-function print(p){
-  const k=p.print, ink=p.dark?'#f2ede2':'#2b2620';
-  if(p.type==='tee'||p.type==='hoodie'){
-    const cx=100, cy=p.type==='tee'?128:120;
-    if(k==='enso')return `<circle cx="${cx}" cy="${cy}" r="26" fill="none" stroke="${AKA}" stroke-width="5" pathLength="170" stroke-dasharray="150 20" stroke-linecap="round"/><text x="${cx}" y="${cy+52}" text-anchor="middle" font-size="15" fill="${ink}" font-family="Shippori Mincho,serif">心</text>`;
-    if(k==='sun')return `<circle cx="${cx}" cy="${cy-8}" r="17" fill="${AKA}"/><line x1="${cx-24}" y1="${cy+18}" x2="${cx+24}" y2="${cy+18}" stroke="${ink}" stroke-width="2.5"/><line x1="${cx-17}" y1="${cy+26}" x2="${cx+17}" y2="${cy+26}" stroke="${ink}" stroke-width="2"/><line x1="${cx-10}" y1="${cy+33}" x2="${cx+10}" y2="${cy+33}" stroke="${ink}" stroke-width="1.6"/>`;
-    if(k==='torii')return `<g fill="${AKA}"><path d="M${cx-28},${cy-14} Q${cx},${cy-22} ${cx+28},${cy-14} L${cx+25},${cy-7} L${cx-25},${cy-7} Z"/><rect x="${cx-26}" y="${cy-6}" width="52" height="5" rx="1"/><rect x="${cx-19}" y="${cy-6}" width="6" height="34"/><rect x="${cx+13}" y="${cy-6}" width="6" height="34"/><rect x="${cx-15}" y="${cy+8}" width="30" height="4" rx="1"/></g><text x="${cx}" y="${cy+46}" text-anchor="middle" font-size="12" letter-spacing="4" fill="${ink}" font-family="Manrope">KYOTO</text>`;
-    if(k==='wave'){let s='';for(let r=0;r<3;r++)for(let j=0;j<3;j++){const x=cx-30+j*30,y=cy-12+r*16;s+=`<path d="M${x-11},${y} A11,11 0 0 1 ${x+11},${y}" fill="none" stroke="${r===1?AKA:ink}" stroke-width="2"/>`;}return s;}
-    if(k==='kanji')return `<text x="${cx}" y="${cy+18}" text-anchor="middle" font-size="52" fill="${ink}" font-family="Shippori Mincho,serif">${p.ch||'幽'}</text>`;
-    if(k==='rain'){let s='';for(let i=0;i<9;i++){const x=cx-28+(i%3)*28,y=cy-20+Math.floor(i/3)*16;s+=`<line x1="${x}" y1="${y}" x2="${x-7}" y2="${y+11}" stroke="${ink}" stroke-width="2" stroke-linecap="round"/>`;}return s+`<text x="${cx}" y="${cy+46}" text-anchor="middle" font-size="13" fill="${AKA}" font-family="Shippori Mincho,serif">雨</text>`;}
-    if(k==='tokyo')return `<text x="${cx+8}" y="${cy-24}" text-anchor="middle" font-size="30" fill="${ink}" font-family="Shippori Mincho,serif" writing-mode="tb">東京</text><text x="${cx-16}" y="${cy+30}" text-anchor="middle" font-size="11" letter-spacing="3" fill="${ink}" font-family="Manrope">TOKYO</text>`;
-  }
-  return '';
-}
-
-const PRODUCTS=[
- {id:1, type:'tee', cat:'tees', name:'KOMOREBI', kj:'木漏れ日', sub:'Свет сквозь листву · принт энсо · экрю', price:3490, old:4290, c:'#ece4d2', dark:false, print:'enso', rating:4.8, rev:234, liked:1892, badge:'HIT'},
- {id:2, type:'tee', cat:'tees', name:'SUMI', kj:'墨', sub:'Тушь · чистая чёрная без принта', price:2490, old:null, c:'#1e1c19', dark:true, print:'none', rating:4.5, rev:567, liked:3456, badge:''},
- {id:3, type:'tee', cat:'tees', name:'HINODE', kj:'日の出', sub:'Восход · красное солнце · белая', price:2990, old:null, c:'#f6f3ec', dark:false, print:'sun', rating:4.9, rev:312, liked:2341, badge:'NEW'},
- {id:4, type:'tee', cat:'tees', name:'TORII', kj:'鳥居', sub:'Врата · принт Киото · индиго', price:3290, old:null, c:'#2e3d55', dark:true, print:'torii', rating:4.7, rev:156, liked:1234, badge:''},
- {id:5, type:'tee', cat:'tees', name:'KAZE', kj:'風', sub:'Ветер · волны сэйгайха · песок', price:3190, old:3790, c:'#d9c7a7', dark:false, print:'wave', rating:4.6, rev:189, liked:1456, badge:'-16%'},
- {id:6, type:'tee', cat:'tees', name:'SHIRO', kj:'白', sub:'Белизна · базовая без принта', price:2490, old:null, c:'#fbfaf7', dark:false, print:'none', rating:4.4, rev:423, liked:2890, badge:''},
- {id:7, type:'hoodie', cat:'hoodies', name:'YUGEN', kj:'幽玄', sub:'Тайна · иероглиф · чёрное', price:5990, old:null, c:'#1e1c19', dark:true, print:'kanji', ch:'幽', rating:4.9, rev:401, liked:3120, badge:'HIT'},
- {id:8, type:'hoodie', cat:'hoodies', name:'KIRI', kj:'霧', sub:'Туман · чистое серое', price:5290, old:null, c:'#b9b4a8', dark:false, print:'none', rating:4.6, rev:198, liked:1765, badge:''},
- {id:9, type:'hoodie', cat:'hoodies', name:'AME', kj:'雨', sub:'Дождь · принт дождь · синее', price:5490, old:null, c:'#31435e', dark:true, print:'rain', rating:4.7, rev:176, liked:1543, badge:'NEW'},
- {id:10, type:'hoodie', cat:'hoodies', name:'MATCHA', kj:'抹茶', sub:'Матча · спокойное оливковое', price:5190, old:5890, c:'#6a6f52', dark:true, print:'tokyo', rating:4.8, rev:287, liked:2654, badge:'-12%'},
- {id:11, type:'jeans', cat:'jeans', name:'KURO', kj:'黒', sub:'Зауженные · чёрный деним', price:5990, old:null, c:'#232326', dark:true, print:'none', rating:4.7, rev:345, liked:2345, badge:'NEW'},
- {id:12, type:'jeans', cat:'jeans', name:'AI', kj:'藍', sub:'Прямые · классическое индиго', price:5490, old:6290, c:'#3f5f8a', dark:true, print:'none', rating:4.8, rev:456, liked:3456, badge:'HIT'},
- {id:13, type:'jeans', cat:'jeans', name:'ASA', kj:'麻', sub:'Зауженные · светлый лён', price:5290, old:null, c:'#e6ddcb', dark:false, print:'none', rating:4.5, rev:178, liked:1234, badge:''},
- {id:14, type:'jeans', cat:'jeans', name:'KON', kj:'紺', sub:'Прямые · глубокий тёмно-синий', price:5690, old:null, c:'#26324a', dark:true, print:'none', rating:4.6, rev:234, liked:1890, badge:''},
- {id:15, type:'jeans', cat:'jeans', name:'MIDORI', kj:'緑', sub:'Обычная посадка · мох', price:5490, old:null, c:'#5a5f4a', dark:true, print:'none', rating:4.4, rev:123, liked:876, badge:''},
- {id:16, type:'jeans', cat:'jeans', name:'SABI', kj:'錆', sub:'Зауженные · варёный голубой', price:5790, old:6490, c:'#7d9bbf', dark:false, print:'none', rating:4.7, rev:267, liked:1987, badge:'-11%'},
+const FB=s=>`this.onerror=null;this.src='https://picsum.photos/seed/${s}/800/1000'`;
+const P=[
+ // футболки
+ {id:1,cat:'tees',name:'KOMOREBI',kj:'木漏れ日',sub:'Свет сквозь листву · экрю',price:3490,old:4290,img:'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=800&auto=format&fit=crop',rating:4.8,rev:234,liked:1892,badge:'HIT'},
+ {id:2,cat:'tees',name:'SUMI',kj:'墨',sub:'Тушь · чистая чёрная',price:2490,old:null,img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=800&auto=format&fit=crop',rating:4.5,rev:567,liked:3456,badge:''},
+ {id:3,cat:'tees',name:'HINODE',kj:'日の出',sub:'Восход · белая',price:2990,old:null,img:'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=800&auto=format&fit=crop',rating:4.9,rev:312,liked:2341,badge:'NEW'},
+ {id:4,cat:'tees',name:'TORII',kj:'鳥居',sub:'Врата · индиго',price:3290,old:null,img:'https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=800&auto=format&fit=crop',rating:4.7,rev:156,liked:1234,badge:''},
+ {id:5,cat:'tees',name:'KAZE',kj:'風',sub:'Ветер · песочное',price:3190,old:3790,img:'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=800&auto=format&fit=crop',rating:4.6,rev:189,liked:1456,badge:'-16%'},
+ {id:6,cat:'tees',name:'SHIRO',kj:'白',sub:'Белизна · базовая белая',price:2490,old:null,img:'https://images.unsplash.com/photo-1503341504253-dff4815485f1?q=80&w=800&auto=format&fit=crop',rating:4.4,rev:423,liked:2890,badge:''},
+ // худи
+ {id:7,cat:'hoodies',name:'YUGEN',kj:'幽玄',sub:'Тайна · чёрное',price:5990,old:null,img:'https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=800&auto=format&fit=crop',rating:4.9,rev:401,liked:3120,badge:'HIT'},
+ {id:8,cat:'hoodies',name:'KIRI',kj:'霧',sub:'Туман · серое',price:5290,old:null,img:'https://images.unsplash.com/photo-1578681994506-b8f463449011?q=80&w=800&auto=format&fit=crop',rating:4.6,rev:198,liked:1765,badge:''},
+ {id:9,cat:'hoodies',name:'AME',kj:'雨',sub:'Дождь · синее',price:5490,old:null,img:'https://images.unsplash.com/photo-1622445275576-721325763afe?q=80&w=800&auto=format&fit=crop',rating:4.7,rev:176,liked:1543,badge:'NEW'},
+ {id:10,cat:'hoodies',name:'MATCHA',kj:'抹茶',sub:'Матча · олива',price:5190,old:5890,img:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=800&auto=format&fit=crop',rating:4.8,rev:287,liked:2654,badge:'-12%'},
+ // джинсы
+ {id:11,cat:'jeans',name:'KURO',kj:'黒',sub:'Зауженные · чёрный деним',price:5990,old:null,img:'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=800&auto=format&fit=crop',rating:4.7,rev:345,liked:2345,badge:'NEW'},
+ {id:12,cat:'jeans',name:'AI',kj:'藍',sub:'Прямые · классическое индиго',price:5490,old:6290,img:'https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=800&auto=format&fit=crop',rating:4.8,rev:456,liked:3456,badge:'HIT'},
+ {id:13,cat:'jeans',name:'ASA',kj:'麻',sub:'Зауженные · светлый лён',price:5290,old:null,img:'https://images.unsplash.com/photo-1582552938357-32b906df40cb?q=80&w=800&auto=format&fit=crop',rating:4.5,rev:178,liked:1234,badge:''},
+ {id:14,cat:'jeans',name:'KON',kj:'紺',sub:'Прямые · глубокий синий',price:5690,old:null,img:'https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=800&auto=format&fit=crop',rating:4.6,rev:234,liked:1890,badge:''},
+ {id:15,cat:'jeans',name:'MIDORI',kj:'緑',sub:'Обычная посадка · мох',price:5490,old:null,img:'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=800&auto=format&fit=crop',rating:4.4,rev:123,liked:876,badge:''},
+ {id:16,cat:'jeans',name:'SABI',kj:'錆',sub:'Варёный · голубой деним',price:5790,old:6490,img:'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=800&auto=format&fit=crop',rating:4.7,rev:267,liked:1987,badge:'-11%'},
 ];
-
-let filter='all', cart=[], state={};
-const TS=['XS','S','M','L','XL'], JS=['28','30','32','34','36'];
+let filter='all',cart=[],state={};
+const TS=['XS','S','M','L','XL'],JS=['28','30','32','34','36'];
 const money=n=>n.toLocaleString('ru-RU')+' ₽';
-
 function setFilter(f){filter=f;document.querySelectorAll('.fbtn').forEach(b=>b.classList.toggle('active',b.dataset.f===f));render();document.getElementById('catalog').scrollIntoView({behavior:'smooth'});}
 function cardHTML(p,i){
   const st=state[p.id]||{};
   const sizes=(p.cat==='jeans'?JS:TS).map(s=>`<button class="sz ${st.size===s?'active':''}" onclick="pickSize(${p.id},'${s}',event)">${s}</button>`).join('');
-  const dots=[p.c,'#1e1c19','#ece4d2','#31435e'].slice(0,3).map((c,j)=>`<span class="dot ${ (st.color||0)===j?'sel':''}" style="background:${c}" onclick="pickColor(${p.id},${j},event)"></span>`).join('');
+  const cols=['#ece4d2','#1e1c19','#31435e','#7d9bbf'];
+  const dots=cols.map((c,j)=>`<span class="dot ${(st.color||0)===j?'sel':''}" style="background:${c}" onclick="pickColor(${p.id},${j},event)"></span>`).join('');
   let stars='';for(let s=1;s<=5;s++)stars+=`<span class="star ${s<=Math.round(p.rating)?'f':''}" onclick="rate(${p.id},${s},event)">★</span>`;
-  return `<div class="card"><div class="ph">${garment(p)}
+  return `<div class="card"><div class="ph">
+    <img loading="lazy" src="${p.img}" alt="${p.name}" onerror="${FB('sfh'+p.id)}">
     ${p.badge?`<span class="sticker-badge ${p.badge==='HIT'?'hot':''}">${p.badge}</span>`:''}
     <div class="wbtns"><button class="wbtn ${st.liked?'liked':''}" onclick="like(${p.id},event)">${st.liked?'♥':'♡'}</button><button class="wbtn ${st.disliked?'disliked':''}" onclick="dislike(${p.id},event)">👎</button></div>
-    <span class="pnum">№ ${String(i+1).padStart(2,'0')}</span></div>
-    <div class="info"><div class="row1"><div class="name">${p.name}<span class="kj mincho">${p.kj}</span></div><div class="price">${p.old?`<s>${money(p.old)}</s>`:''}${money(p.price)}</div></div>
-    <div class="sub">${p.sub}</div><div class="dots">${dots}</div>
-    <div class="stars">${stars}<span class="snum">${p.rating} · ${p.rev}</span></div>
-    <div class="sizes">${sizes}</div>
-    <div class="likedrow">♥ Нравится <b>${(p.liked+(st.liked?1:0)).toLocaleString('ru-RU')}</b></div>
-    <button class="addbtn" onclick="addCart(${p.id},event)">В КОРЗИНУ →</button></div></div>`;
+  </div>
+  <div class="info"><div class="row1"><div class="name">${p.name}<span class="kj mincho">${p.kj}</span></div><div class="price">${p.old?`<s>${money(p.old)}</s>`:''}${money(p.price)}</div></div>
+  <div class="sub">${p.sub}</div><div class="dots">${dots}</div>
+  <div class="stars">${stars}<span class="snum">${p.rating} · ${p.rev}</span></div>
+  <div class="sizes">${sizes}</div>
+  <div class="likedrow">♥ Нравится <b>${(p.liked+(st.liked?1:0)).toLocaleString('ru-RU')}</b></div>
+  <button class="addbtn" onclick="addCart(${p.id},event)">В КОРЗИНУ →</button></div></div>`;
 }
 function render(){
   const q=(document.getElementById('searchInput').value||'').toLowerCase().trim();
   const sort=document.getElementById('sortSel').value;
-  let list=PRODUCTS.filter(p=>(filter==='all'||p.cat===filter)&&(!q||(p.name+' '+p.kj+' '+p.sub).toLowerCase().includes(q)));
+  let list=P.filter(p=>(filter==='all'||p.cat===filter)&&(!q||(p.name+' '+p.kj+' '+p.sub).toLowerCase().includes(q)));
   if(sort==='cheap')list=[...list].sort((a,b)=>a.price-b.price);
   if(sort==='exp')list=[...list].sort((a,b)=>b.price-a.price);
   if(sort==='rate')list=[...list].sort((a,b)=>b.rating-a.rating);
   if(sort==='pop')list=[...list].sort((a,b)=>b.liked-a.liked);
   document.getElementById('grid').innerHTML=list.length?list.map(cardHTML).join(''):'<p style="grid-column:1/-1;text-align:center;color:var(--muted);padding:40px">Пусто. Как хороший свиток — попробуй другой запрос.</p>';
-  document.getElementById('resultCount').textContent=`Показано: ${list.length} из ${PRODUCTS.length}`;
+  document.getElementById('resultCount').textContent=`Показано: ${list.length} из ${P.length}`;
 }
 function like(id,e){e.stopPropagation();const s=state[id]=state[id]||{};s.liked=!s.liked;if(s.liked)s.disliked=false;render();updFav();toast(s.liked?'В избранном ♥':'Убрано из избранного');}
 function dislike(id,e){e.stopPropagation();const s=state[id]=state[id]||{};s.disliked=!s.disliked;if(s.disliked)s.liked=false;render();updFav();}
 function rate(id,v,e){e.stopPropagation();toast(`Твоя оценка: ${v} из 5 ★`);}
 function pickSize(id,s,e){e.stopPropagation();(state[id]=state[id]||{}).size=s;e.target.parentElement.querySelectorAll('.sz').forEach(b=>b.classList.remove('active'));e.target.classList.add('active');}
 function pickColor(id,i,e){e.stopPropagation();(state[id]=state[id]||{}).color=i;e.target.parentElement.querySelectorAll('.dot').forEach(d=>d.classList.remove('sel'));e.target.classList.add('sel');}
-function addCart(id,e){if(e)e.stopPropagation();const p=PRODUCTS.find(x=>x.id===id);
-  if(!(state[id]||{}).size){toast('Выбери размер 👆');return;}
+function addCart(id,e){if(e)e.stopPropagation();const p=P.find(x=>x.id===id);if(!(state[id]||{}).size){toast('Выбери размер 👆');return;}
   cart.push({...p,size:state[id].size});updCart();toast('В корзине 🛒');openCart();}
 function updCart(){document.getElementById('cartCount').textContent=cart.length;
-  document.getElementById('ditems').innerHTML=cart.length?cart.map((it,i)=>`<div class="ditem"><div class="thumb">${garment(it)}</div><div><div class="n">${it.name} <span class="mincho" style="color:var(--aka)">${it.kj}</span></div><div class="s">Размер: ${it.size}</div><div class="p">${money(it.price)}</div></div><button class="rm" onclick="rmCart(${i})">✕</button></div>`).join(''):'<p style="text-align:center;color:var(--muted);padding:40px">Пока пусто.<br>Загляни в каталог 👆</p>';
+  document.getElementById('ditems').innerHTML=cart.length?cart.map((it,i)=>`<div class="ditem"><div class="thumb"><img src="${it.img}" onerror="${FB('cart'+i)}"></div><div><div class="n">${it.name} <span class="mincho" style="color:var(--aka)">${it.kj}</span></div><div class="s">Размер: ${it.size}</div><div class="p">${money(it.price)}</div></div><button class="rm" onclick="rmCart(${i})">✕</button></div>`).join(''):'<p style="text-align:center;color:var(--muted);padding:40px">Пока пусто.<br>Загляни в каталог 👆</p>';
   document.getElementById('dtotal').textContent=money(cart.reduce((s,i)=>s+i.price,0));}
 function rmCart(i){cart.splice(i,1);updCart();}
 function updFav(){document.getElementById('favCount').textContent=Object.values(state).filter(s=>s.liked).length;}
@@ -503,15 +423,6 @@ function doPay(e){e.preventDefault();closeAll();document.getElementById('success
 function fmtCard(el){let v=el.value.replace(/\D/g,'').slice(0,16);el.value=v.replace(/(\d{4})(?=\d)/g,'$1 ');}
 function fmtExp(el){let v=el.value.replace(/\D/g,'').slice(0,4);el.value=v.length>2?v.slice(0,2)+'/'+v.slice(2):v;}
 let toastT;function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('on'),2400);}
-
-/* витрина и категории — тот же единый шаблон */
-document.getElementById('heroTee').innerHTML=garment(PRODUCTS[0]);
-document.getElementById('heroHoodie').innerHTML=garment(PRODUCTS[6]);
-document.getElementById('heroJeans').innerHTML=garment(PRODUCTS[11]);
-document.getElementById('catTee').innerHTML=garment(PRODUCTS[2]);
-document.getElementById('catHoodie').innerHTML=garment(PRODUCTS[7]);
-document.getElementById('catJeans').innerHTML=garment(PRODUCTS[11]);
-/* лепестки — тихо */
 (function(){const box=document.getElementById('petals');for(let i=0;i<10;i++){const d=document.createElement('div');d.className='petal';d.style.left=Math.random()*100+'vw';d.style.animationDuration=(Math.random()*6+9)+'s';d.style.animationDelay=(Math.random()*10)+'s';box.appendChild(d);}})();
 document.getElementById('overlay').addEventListener('click',closeAll);
 render();updCart();updFav();
